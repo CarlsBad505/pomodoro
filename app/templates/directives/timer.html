@@ -1,5 +1,7 @@
 <div class="center">
 	<p id="timer">{{ message | date : 'mm:ss' }}</p>
-	<button class="btn btn-success btn-lg" ng-click="startTimer()">{{ start }}</button>
-	<button class="btn btn-danger btn-lg" ng-click="resetTimer()">{{ reset }}</button>
+	<button ng-show="!workTimer && !onBreak" class="btn btn-success btn-lg" ng-click="startWorkTimer()">{{ startWork }}</button>
+	<button ng-show="workTimer && !onBreak" class="btn btn-danger btn-lg" ng-click="resetWorkTimer()">{{ resetWork }}</button>
+	<button ng-show="!breakTimer && onBreak" class="btn btn-success btn-lg" ng-click="startBreakTimer()">{{ startBreak }}</button>
+	<button ng-show="breakTimer && onBreak" class="btn btn-danger btn-lg" ng-click="resetBreakTimer()">{{ resetBreak }}</button>
 </div>

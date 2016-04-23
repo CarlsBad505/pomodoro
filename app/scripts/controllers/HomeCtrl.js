@@ -30,7 +30,7 @@
 //				$interval.cancel(vm.timer);
 //			} 
 //		}
-//	}
+	}
 		
 	angular
 		.module('pomodoro')
