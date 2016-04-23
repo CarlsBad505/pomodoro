@@ -29,9 +29,15 @@
 				};
 				
 				scope.startBreakTimer = function() {
+					if (completedWorkSessions === 2) {
+						scope.message = "Extended Break Started!"
+						breakTime = 10000; // change this to 1800000
+						scope.breakTimer = $interval(updateBreakTime, delay);
+					} else {
 					scope.message = "Break Session Started!";
 					breakTime = 5000; // change to 300000 later when done testing
 					scope.breakTimer = $interval(updateBreakTime, delay);
+					}
 				}
 				
 				scope.resetBreakTimer = function () {
@@ -45,15 +51,22 @@
 				var endTime = null;
 				var breakTime = null;
 				var delay = 1000;
+				var completedWorkSessions = 0;
 
 				function updateWorkTime() {
 					endTime -= delay;
 					scope.message = endTime;
 					if (endTime <= 0) {
 						$interval.cancel(scope.workTimer);
-						scope.message="Work Session Finished!";
+						completedWorkSessions += 1;
+						if (completedWorkSessions === 2) {
+							scope.message = "Work Session Finished, Start Your Extended Break!"
+						} else {
+							scope.message = "Work Session Finished!";
+						}
 						scope.onBreak = true;
 						scope.workTimer = null;
+						
 					} 
 				}
 				
@@ -62,11 +75,15 @@
 					scope.message = breakTime;
 					if (breakTime <= 0) {
 						$interval.cancel(scope.breakTimer);
-						scope.message="Break Session Finished!";
+						if (completedWorkSessions === 2) {
+							scope.message = "Extended Break Session Finished!"
+							completedWorkSessions === 0;
+						} else {
+							scope.message="Break Session Finished!";
+						}
 						scope.onBreak = null;
 						scope.breakTimer = null;
 					}
-					
 				}
 			}
 		};
