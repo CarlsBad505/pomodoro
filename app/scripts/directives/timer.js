@@ -17,7 +17,6 @@
 				scope.startWorkTimer = function() {
 					scope.message = "Work Session Started!";
 					endTime = 10000; // Change this to 1500000 when done testing
-					alertSound = null;
 					scope.workTimer = $interval(updateWorkTime, delay);
 				};
 
@@ -49,14 +48,16 @@
 					}
 				}
 				
-				scope.alertSound = null;
+				function playDing() {
+					console.count("Played the ding sound");
+					ding.play();					
+				}
 				
-				scope.$watch('alertSound', function(newVal, oldVal) {
-					if (newVal) {
-						ding.play();
-						scope.alertSound = null;
-					};
-				})
+//				scope.$watch('alertSound', function(newVal, oldVal) {
+//					if (newVal) {
+//						ding.play();
+//					};
+//				});
 
 				var endTime = null;
 				var breakTime = null;
@@ -72,7 +73,7 @@
 					if (endTime <= 0) {
 						$interval.cancel(scope.workTimer);
 						completedWorkSessions += 1;
-						scope.alertSound = true;
+						playDing();
 						if (completedWorkSessions === 2) {
 							scope.message = "Work Session Finished, Start Your Extended Break!"
 						} else {
@@ -89,7 +90,7 @@
 					scope.message = breakTime;
 					if (breakTime <= 0) {
 						$interval.cancel(scope.breakTimer);
-						scope.alertSound = true;
+						playDing();
 						if (completedWorkSessions === 2) {
 							scope.message = "Extended Break Session Finished!"
 							completedWorkSessions === 0;
