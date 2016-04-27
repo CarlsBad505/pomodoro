@@ -1,5 +1,7 @@
 .start-timer {
 	margin: auto;
+	height: 1000px;
+	float: right;
 }
 
 .title {
@@ -7,3 +9,37 @@
 	font-size: 80px;
     font-family: fantasy
 }
+
+.tasks {
+	background-color: #ececec;
+	height: 1000px;
+	float: left;
+	text-align: center;
+}
+
+.tasks .task-title {
+/*	text-align: center;*/
+	padding-top: 30px;
+	font-family: fantasy;
+	font-size: 30px;
+}
+
+.tasks .task-input {
+	width: 75%;
+	margin: auto;
+}
+
+.tasks .task-button {
+	margin: 15px;
+}
+
+.tasks .task-list {
+	padding-top: 20px;
+}
+
+.tasks .task-items {
+	text-align: center;
+	font-weight: bold;
+	font-size: 16px;
+}
+

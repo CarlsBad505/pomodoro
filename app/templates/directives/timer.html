@@ -1,4 +1,5 @@
 <div class="center">
+	<h1 class="title">Pomodoro Time Management</h1>
 	<p id="timer">{{ message | date : 'mm:ss' }}</p>
 	<button ng-show="!workTimer && !onBreak" class="btn btn-success btn-lg" ng-click="startWorkTimer()">{{ startWork }}</button>
 	<button ng-show="workTimer && !onBreak" class="btn btn-danger btn-lg" ng-click="resetWorkTimer()">{{ resetWork }}</button>

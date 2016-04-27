@@ -1,8 +1,21 @@
-<div class="col-md-12 start-timer">
-	<h1 class="title">Pomodoro Time Management</h1>
+<div class="col-md-8 start-timer">
 
 	<timer></timer>
 	
 </div>
 
+<section class="col-md-4 tasks">
+	<h3 class="task-title">Completed Tasks!</h3>
+	<form>
+		<input type="text" placeholder="Write your completed task here..." class="form-control task-input" ng-model="vm.completedTask">
+		<button class="btn btn-primary task-button" type="button" ng-click="vm.addTask()"><strong>+</strong> Add Completed Task!</button>
+	</form>
+	
+	<div class="task-list">
+		<div ng-repeat="task in vm.tasks">
+			<p class="task-items">- {{ task.$value }}</p>
+<!--			<p>{{ task }}</p>-->
+		</div>
+	</div>
+</section>
 
