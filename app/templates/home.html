@@ -12,9 +12,8 @@
 	</form>
 	
 	<div class="task-list">
-		<div ng-repeat="task in vm.tasks">
-			<p class="task-items">- {{ task.$value }}</p>
-<!--			<p>{{ task }}</p>-->
+		<div ng-repeat="task in vm.tasks | orderBy: '-dateTime'">
+			<p class="task-items">- {{ task.taskName }}</p>
 		</div>
 	</div>
 </section>

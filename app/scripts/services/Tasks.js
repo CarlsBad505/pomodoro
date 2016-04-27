@@ -12,8 +12,11 @@
 			return tasksRef;
 		}
 		
-		function addTask(taskName) {
-			tasksRef.$add(taskName);
+		function addTask(name) {
+			tasksRef.$add({
+				dateTime: Date.now(),
+				taskName: name
+			});
 		}
 	}
 	
